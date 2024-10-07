@@ -7,15 +7,17 @@ export default function Controller({ type }) {
   const { data2, setData2 } = useContext(Context2);
 
   const buttonStyle = {
-   background: "transparent",
-   color: "#fff",
-   border: "1px solid #ffffff6e",
-   padding: "5px 15px",
-   borderRadius: "5px",
-   cursor: "pointer",
-   margin: "5px",
-   transition: "background 0.3s ease",
- };
+    background: "transparent",
+    color: "#fff",
+    border: "1px solid #ffffff6e",
+    padding: "5px 10px", // Adjusted padding for smaller screens
+    borderRadius: "5px",
+    cursor: "pointer",
+    margin: "5px",
+    transition: "background 0.3s ease",
+    width: "80px", // Ensure buttons remain small on mobile
+    textAlign: "center",
+  };
 
   return type === "session" ? (
     <div
@@ -27,35 +29,22 @@ export default function Controller({ type }) {
         borderRadius: "5px",
         display: "inline-block",
         textAlign: "center",
-        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)"
+        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+        width: "100%", // Ensure responsiveness
+        maxWidth: "180px", // Control max width for mobile
       }}
     >
-      <span style={{ fontSize: "1.2rem", marginRight: "10px" }}>{data1.sessionTime} min </span>
-      
-      <button 
-        onClick={() =>
-          setData1((p) => ({
-            ...p,
-            sessionTime: p.sessionTime < 60 ? ++p.sessionTime : 60
-          }))
-        }
-        style={buttonStyle}
-      >
+      <span style={{color:"white" , fontSize: "1.1rem", marginRight: "10px" }}>{data1.sessionTime} min</span>
+      <div>
+      <button onClick={() => setData1((p) => ({ ...p, sessionTime: p.sessionTime < 60 ? ++p.sessionTime : 60 }))} style={buttonStyle}>
         +
       </button>
-      <button
-        onClick={() =>
-          setData1((p) => ({
-            ...p,
-            sessionTime: p.sessionTime > 0 ? --p.sessionTime : 0
-          }))
-        }
-        style={buttonStyle}
-      >
+      <button onClick={() => setData1((p) => ({ ...p, sessionTime: p.sessionTime > 0 ? --p.sessionTime : 0 }))} style={buttonStyle}>
         -
       </button>
-      <br></br>
-      <span style={{fontSize:"13px" ,display:"inline-block", margin:"5px"}}>{"(session)"}</span>
+      </div>
+      
+      <span style={{ fontSize: "13px", display: "block", marginTop: "5px" }}>{"(session)"}</span>
     </div>
   ) : (
     <div
@@ -67,34 +56,22 @@ export default function Controller({ type }) {
         borderRadius: "5px",
         display: "inline-block",
         textAlign: "center",
-        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)"
+        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+        width: "100%",
+        maxWidth: "180px",
       }}
     >
-      <span style={{ fontSize: "1.2rem", marginRight: "10px" }}>{data2.breakTime} min</span>
-      <button
-        onClick={() =>
-          setData2((p) => ({
-            ...p,
-            breakTime: p.breakTime < 60 ? ++p.breakTime : 60
-          }))
-        }
-        style={buttonStyle}
-      >
+      <span style={{color:"white" ,fontSize: "1.1rem", marginRight: "10px" }}>{data2.breakTime} min</span>
+      <div>
+      <button onClick={() => setData2((p) => ({ ...p, breakTime: p.breakTime < 60 ? ++p.breakTime : 60 }))} style={buttonStyle}>
         +
       </button>
-      <button
-        onClick={() =>
-          setData2((p) => ({
-            ...p,
-            breakTime: p.breakTime > 0 ? --p.breakTime : 0
-          }))
-        }
-        style={buttonStyle}
-      >
+      <button onClick={() => setData2((p) => ({ ...p, breakTime: p.breakTime > 0 ? --p.breakTime : 0 }))} style={buttonStyle}>
         -
       </button>
-      <br></br>
-      <span style={{fontSize:"13px" ,display:"inline-block", margin:"5px"}}>{"(break)"}</span>
+      </div>
+      
+      <span style={{ fontSize: "13px", display: "block", marginTop: "5px" }}>{"(break)"}</span>
     </div>
   );
 }

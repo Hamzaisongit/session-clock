@@ -12,9 +12,9 @@ export default function SessionCounter() {
   const { data1, setData1 } = useContext(Context1);
   const { data, setData } = useContext(Context);
 
-  const [play] = useSound('/sound/trialaudio.mp3',{
-    volume: 0.4
-  })
+  const [play] = useSound("/sound/trialaudio.mp3", {
+    volume: 0.4,
+  });
 
   const buttonStyle = {
     background: "transparent",
@@ -25,29 +25,33 @@ export default function SessionCounter() {
     cursor: "pointer",
     margin: "5px",
     transition: "background 0.3s ease",
+    fontSize: "1rem",
   };
 
   const render = ({ seconds, minutes, completed, api }) => {
     return (
-      <div style={{ fontSize: "1.5rem", color: "#495057" }}>
+      <div
+        style={{
+          fontSize: "1.5rem",
+          color: "#495057",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+          gap: "10px",
+        }}
+      >
         <span style={{ marginRight: "10px" }}>
           {minutes}:{seconds}
         </span>
-        <button
-          onClick={api.start}
-          style={buttonStyle}
-        >
-          Start
-        </button>
-        <button
-          onClick={() => {
-            console.log(completed);
-            api.pause();
-          }}
-          style={buttonStyle}
-        >
-          Pause
-        </button>
+        <div style={{ display: "flex", gap: "10px" }}>
+          <button onClick={api.start} style={buttonStyle}>
+            Start
+          </button>
+          <button onClick={api.pause} style={buttonStyle}>
+            Pause
+          </button>
+        </div>
       </div>
     );
   };
@@ -59,13 +63,11 @@ export default function SessionCounter() {
         renderer={render}
         controlled={false}
         onComplete={() => {
-          play()
-          setData((p) => {
-            return {
-              ...p,
-              currentMode: "break",
-            };
-          });
+          play();
+          setData((prev) => ({
+            ...prev,
+            currentMode: "break",
+          }));
         }}
       />
       <button
@@ -77,5 +79,3 @@ export default function SessionCounter() {
     </>
   );
 }
-
-

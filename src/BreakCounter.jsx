@@ -6,9 +6,7 @@ import useSound from "use-sound";
 
 export default function BreakCounter() {
   const [reset, setReset] = useState(false);
-  const [play] = useSound('/sound/trialaudio.mp3', {
-    volume: 0.4
-  });
+  const [play] = useSound("/sound/trialaudio.mp3", { volume: 0.4 });
   useEffect(() => {}, [reset]);
 
   const { data2, setData2 } = useContext(Context2);
@@ -16,7 +14,7 @@ export default function BreakCounter() {
 
   const render = ({ seconds, minutes, completed, api }) => {
     return (
-      <div style={{ fontSize: "1.5rem", color: "#495057" }}>
+      <div style={{ fontSize: "1.2rem", color: "#495057", textAlign: "center" }}>
         <span style={{ marginRight: "10px" }}>
           {minutes}:{seconds}
         </span>
@@ -28,7 +26,6 @@ export default function BreakCounter() {
         </button>
         <button
           onClick={() => {
-            console.log(completed);
             api.pause();
           }}
           style={buttonStyle}
@@ -46,13 +43,11 @@ export default function BreakCounter() {
         renderer={render}
         controlled={false}
         onComplete={() => {
-          play()
-          setData((p) => {
-            return {
-              ...p,
-              currentMode: "session",
-            };
-          });
+          play();
+          setData((p) => ({
+            ...p,
+            currentMode: "session",
+          }));
         }}
       />
       <button
@@ -69,9 +64,11 @@ const buttonStyle = {
   background: "transparent",
   color: "#fff",
   border: "1px solid #ffffff6e",
-  padding: "5px 15px",
+  padding: "5px 10px", // Make padding more mobile-friendly
   borderRadius: "5px",
   cursor: "pointer",
   margin: "5px",
   transition: "background 0.3s ease",
+  maxWidth: "100px", // Control button size for mobile
+  width: "100%",
 };
