@@ -15,7 +15,7 @@ export default function BreakCounter() {
   const render = ({ seconds, minutes, completed, api }) => {
     return (
       <div style={{ fontSize: "1.2rem", color: "#495057", textAlign: "center" }}>
-        <span style={{ marginRight: "10px" }}>
+        <span style={{fontSize:"6vw", marginRight: "10px" }}>
           {minutes}:{seconds}
         </span>
         <button

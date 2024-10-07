@@ -41,7 +41,7 @@ export default function SessionCounter() {
           gap: "10px",
         }}
       >
-        <span style={{ marginRight: "10px" }}>
+        <span style={{fontSize:"6vw", marginRight: "10px" }}>
           {minutes}:{seconds}
         </span>
         <div style={{ display: "flex", gap: "10px" }}>
