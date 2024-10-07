@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url('/sound/zenImage.jpg');
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-position: center; /* Keeps the image centered */
+    background-attachment: fixed; /* Keeps the background fixed during scrolling */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    font-family: 'Arial', sans-serif; /* You can use a clean font for better readability */
+    color: #ffffff; /* Ensures text stands out on the darker background */
+    font-weight: bolder;
+    min-height: 100vh; /* Ensures body takes full height */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
